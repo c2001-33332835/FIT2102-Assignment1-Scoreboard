@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import { sha256 } from 'js-sha256';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import { getScoreboard, submitScoreboard } from './scoreboard';
 
 dotenv.config();
@@ -11,6 +12,7 @@ const secret = process.env.SECRET!;
 const filename = process.env.FILENAME!;
 
 app.use(express.json());
+app.use(cors<Request>());
 
 const serialize = (object: any) => JSON.parse(JSON.stringify(object));
 
