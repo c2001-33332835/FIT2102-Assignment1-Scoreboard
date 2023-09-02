@@ -2,7 +2,9 @@
 
 Create a `.env` file with the following content:
 ```
-PORT=<PORT NUMBER>
+PORT=<port number>
+SECRET=<secret>
+FILENAME=<filename to store scoreboard>
 ```
 
 use `pnpm install` install dependencies and `pnpm run dev` to run development session.  
