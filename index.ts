@@ -22,7 +22,7 @@ app.post('/submit', (req: Request, res: Response) => {
     res.status(400);
     res.json({
       "status": "error",
-      "message": `The post body is malformed: ${req.body}`,
+      "message": `The post body is malformed: ${JSON.stringify(req.body)}`,
       "content": undefined
     })
     return;
