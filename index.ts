@@ -27,14 +27,9 @@ app.post('/submit', (req: Request, res: Response) => {
   }
 
   // if name too long
-  if (req.body["name"].length > 10){
-    res.status(400);
-    res.json({
-      "status": "error",
-      "message": "The name is too long.",
-      "content": undefined
-    })
-    return;
+  let name: string = req.body.name!
+  if (name.length > 10){
+    name = name.slice(0, 11);
   }
   
   // if secret not match
@@ -48,10 +43,12 @@ app.post('/submit', (req: Request, res: Response) => {
     return;
   }
 
-  submitScoreboard(filename, req.body.name!, req.body.score!);
+  const rank = submitScoreboard(filename, name, req.body.score!);
 
   res.json({
-    "awa": "awa"
+    "status": "success",
+    "message": "The request was successful.",
+    "content": {rank}
   })
 });
 
