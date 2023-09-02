@@ -18,7 +18,12 @@ const serialize = (object: any) => JSON.parse(JSON.stringify(object));
 
 app.post('/submit', (req: Request, res: Response) => {
   // if body malformed
-  if ((!req.body) || (!req.body["name"]) || (!req.body["score"]) || (!req.body["secret"])){
+  if ((!req.body) || 
+      (req.body["name"] === undefined) || 
+      (req.body["score"] === undefined) || 
+      (req.body["secret"] === undefined)
+     ){
+    
     res.status(400);
     res.json({
       "status": "error",
